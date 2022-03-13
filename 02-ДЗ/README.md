@@ -6,7 +6,7 @@
 
 **3)** Создаем контейнер с PostgreSQL 14 и монтируем его /var/lib/postgres [scrin](https://github.com/monstermurm/postgres2022/blob/main/02-%D0%94%D0%97/DockerPostgress.jpg)
 
-**4)** Создаем контейнер с клиентом [](scrin)
+**4)** Создаем контейнер с клиентом [scrin](https://github.com/monstermurm/postgres2022/blob/main/02-%D0%94%D0%97/DockerClient.jpg)
 
 **5)** Создаем базу данных, таблицу и несколько тестовых строк [](scrin)
 
