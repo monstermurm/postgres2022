@@ -8,7 +8,7 @@
 
 **4)** Создаем контейнер с клиентом [scrin](https://github.com/monstermurm/postgres2022/blob/main/02-%D0%94%D0%97/DockerClient.jpg)
 
-**5)** Создаем базу данных, таблицу и несколько тестовых строк [](scrin)
+**5)** Создаем базу данных, таблицу и несколько тестовых строк [scrin](https://github.com/monstermurm/postgres2022/blob/main/02-%D0%94%D0%97/CreateTable.jpg)
 
 **6)** Подключаемся к с компьютора - ???
 
