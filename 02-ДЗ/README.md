@@ -1,3 +1,5 @@
+**Домашнее задание 2.**
+
 1) Создаем инстанс в GCE с Ubuntu 20.04.
 2) Устанавливаем Docker Engine [](scrin)
 3) Создаем контейнер с PostgreSQL 14 и монтируем его /var/lib/postgres [](scrin)
