@@ -46,7 +46,7 @@ sudo mount -o defaults /dev/sdb1 /mnt/data*
 Получаем ошибку, причина в том, что мы базы перенесли в другое место.
 
 **13.** Открываем файл postgresql.conf  
-*sudo nano /etc/postgresql/14/main/postgresql.conf*  
+*sudo nano /etc/postgresql/14/main/postgresql.conf* (тут в ДЗ ошибка, в примере стоит 10-я версия, а мы работаем с 14)  
 и меняем путь данных с /var/lib/postgresql/14/main на /mnt/data/14/main
 
 **14.** Запускаем класетр  
