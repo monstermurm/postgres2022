@@ -34,7 +34,7 @@ alter user postgres password '123';*
 
 **8.** Запускаем бенчмарк и ждем завершения.  
 *pgbench -c8 -P 60 -T 3600 -U postgres -h 127.0.0.1 postgres*  
-Среднее значение tps в конечной части работы около 370.
+Среднее значение tps в конечной части работы около 370, а за весь час 420
 
 **9.** Перенастроем autovacuum.  
 *ALTER SYSTEM SET autovacuum_max_workers TO 6;* - Поднимем количество воркеров до 6  
@@ -45,4 +45,5 @@ alter user postgres password '123';*
 *sudo -u postgres pg_ctlcluster 14 main stop  
 sudo -u postgres pg_ctlcluster 14 main start*
 
-**11.** Запускаем бенчмарк и ждем завершения.
+**11.** Запускаем бенчмарк и ждем завершения.  
+Получили средний tps 296 ()
