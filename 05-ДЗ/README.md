@@ -37,7 +37,7 @@ alter user postgres password '123';*
 Среднее значение tps в конечной части работы около 370.
 
 **9.** Перенастроем autovacuum.  
-*ALTER SYSTEM SET autovacuum_max_workers TO 8;* - Поднимем количество воркеров до 8  
+*ALTER SYSTEM SET autovacuum_max_workers TO 6;* - Поднимем количество воркеров до 6  
 *ALTER SYSTEM SET autovacuum_vacuum_scale_factor TO 0.5;* - Уменьшим частоту срабатывания  
 \q
 
