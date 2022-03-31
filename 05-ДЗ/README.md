@@ -19,11 +19,11 @@ ALTER SYSTEM SET random_page_cost TO 4;
 ALTER SYSTEM SET effective_io_concurrency TO 2;  
 ALTER SYSTEM SET work_mem TO '6553kB';  
 ALTER SYSTEM SET min_wal_size TO '4GB';  
-ALTER SYSTEM SET max_wal_size TO '16GB';  *
+ALTER SYSTEM SET max_wal_size TO '16GB';*  
 
 **5.** Перезапускаем кластер, т.к. некоторые измененные параметры применяются при запуске.  
 *sudo -u postgres pg_ctlcluster 14 main stop  
-sudo -u postgres pg_ctlcluster 14 main start  *
+sudo -u postgres pg_ctlcluster 14 main start*
 
 **6.** Заходим в PostgresSQL и устанавливаем пароль пользователю postgres.  
 *sudo -u postgres psql  
