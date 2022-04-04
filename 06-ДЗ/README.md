@@ -81,7 +81,7 @@ WARNING:  page verification failed, calculated checksum 12216 but expected 57802
  1  
  2  
  3  
-(3 rows)* 
+(3 rows)*  
 в теории тут долюна быть ошибка, которую можно обойти через параметр *ignore_checksum_failure*  
 но у меня просто предупреждение и результат из таблицы  
 при этом проверка режима чек сум показывает  
