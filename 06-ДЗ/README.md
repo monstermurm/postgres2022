@@ -7,7 +7,7 @@
 **3.** Заходим в постгрес.  
 *sudo -u postgres psql*
 
-**4.** Задаем параметры кластера.
+**4.** Задаем параметры кластера.  
 *ALTER SYSTEM SET checkpoint_timeout TO '30s';  
 ALTER SYSTEM SET log_checkpoints = on;*
 
