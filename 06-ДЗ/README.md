@@ -71,23 +71,23 @@ insert into test values (1),(2),(3);*
 **13.** Находим расположение таблицы, останавливаем сервер и меняем пару байт в таблице.
 *SELECT pg_relation_filepath('test');  
 sudo -u postgres pg_ctlcluster 14 test stop  
-sudo dd if=/dev/zero of=/var/lib/postgresql/14/test/base/13760/16384 oflag=dsync conv=notrunc bs=1 count=5*
+sudo dd if=/dev/zero of=/var/lib/postgresql/14/test/base/13760/16384 oflag=dsync conv=notrunc bs=1 count=5*  
 
-**14** Стартуем кластер и пытаемся прочитать из таблицы.
+**14.** Стартуем кластер и пытаемся прочитать из таблицы.  
 *select * from test;  
 WARNING:  page verification failed, calculated checksum 12216 but expected 57802  
  t  
----  
+  
  1  
  2  
  3  
-(3 rows)*  
+(3 rows)* 
 в теории тут долюна быть ошибка, которую можно обойти через параметр *ignore_checksum_failure*  
 но у меня просто предупреждение и результат из таблицы  
 при этом проверка режима чек сум показывает  
 *SHOW data_checksums;  
  data_checksums  
-----------------  
+    
  on  
 (1 row)*  
 Что, контрольные суммы включены. Может я попал в пустую область страницы, поэтому отделался только предупреждением?
