@@ -10,6 +10,7 @@
 
 **2.** Определим границы для секций  
 *select MIN(flight_id), MAX(flight_id) from bookings.ticket_flights*  
+    
     min
     min  max
     2	214867
