@@ -2,11 +2,13 @@
 нет ; в строке SET search_path = pract_functions, publ
 
 **2.** Создаем проведуру для тригера  
-*create or replace function good_sum_mart() returns trigger as  
+
+    create or replace function good_sum_mart() returns trigger as  
     $$  
     declare good_name varchar(63);  
     begin  
-           
+    
+    -- при вставке проверяем есть ли товар в таблице витрины
     IF OLD is null THEN  
         select   
             case when good_sum_mart.good_name is null then  
@@ -27,10 +29,12 @@
         select '' into good_name;  
     END IF;  
     
+    -- если товара нет, добавляем пустую запись
     IF good_name <> '' THEN  
         insert into pract_functions.good_sum_mart select good_name, 0;  
     END IF;  
         
+    -- обновляем резултат изменения продаж
     update pract_functions.good_sum_mart  
         SET sum_sale = sum_sale  
             + CASE WHEN NEW is NULL THEN 0 ELSE NEW.sales_qty * goods.good_price END  
@@ -47,3 +51,25 @@
     $$  
     language plpgsql  
     ;*  
+
+**3.** Создаем триггер  
+
+    create trigger sales
+        after insert or delete or update 
+        on pract_functions.sales
+        FOR EACH ROW EXECUTE function good_sum_mart();
+        
+**4.** Делаем первоначалное заполнение  
+
+    insert into pract_functions.good_sum_mart
+    select 
+        goods.good_name, SUM(sales.sales_qty * goods.good_price)
+    from
+        pract_functions.goods as goods
+        inner join pract_functions.sales as sales
+            on goods.goods_id = sales.good_id
+    group by
+        goods.good_name;
+        
+**5.** Такая схема предпочтителней в местах, где требуется высокая актуальность данных, например отображение онлайн.  
+Для учета изменения цен нужно в таблицу продаж добавить столбец цена или сумма.
