@@ -1,7 +1,7 @@
 **1.** в запросе hw_triggers.sql ошибка  
 нет ; в строке SET search_path = pract_functions, publ
 
-**2.** Создаем проведуру для тригера
+**2.** Создаем проведуру для тригера  
 *create or replace function good_sum_mart() returns trigger as  
     $$  
     declare good_name varchar(63);  
