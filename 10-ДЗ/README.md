@@ -71,4 +71,34 @@ from
     
 Выведем все комбинации номер борта + код аэропорта.
 
-**8.** 
+**8.** Пример полного запроса  
+select
+    coalesce(f.d, t.d) as d,
+    SUM(CASE WHEN f.flight_id is null THEN 0 ELSE 1 END) as s
+from
+    (select 
+        flight_id,
+        date_trunc('DAY', scheduled_departure) as d
+    from
+        bookings.flights
+    where
+        scheduled_departure between '20161101' and '20161130'
+        and date_trunc('DAY', scheduled_departure) not in ('20161104', '20161122')
+    ) as f
+    full join
+    (select
+        date '20161101' + t2.i * 10 + t1.i as d
+    from
+        (select 0 as i union all select 1 union all select 2 union all select 3 union all select 4 union all select 5
+        union all select 6 union all select 7 union all select 8 union all select 9) as t1,
+        (select 0 as i union all select 1 union all select 2 union all select 3 union all select 4 union all select 5
+        union all select 6 union all select 7 union all select 8 union all select 9) as t2
+    where
+        date '20161101' + t2.i * 10 + t1.i between '20161101' and '20161130'
+        and date '20161101' + t2.i * 10 + t1.i not in ('20161105', '20161118')
+     ) as t
+        on f.d = t.d
+group by
+    coalesce(f.d, t.d);
+
+Подсчет количества рейсов по датам с заданной матрицей дат учета.
